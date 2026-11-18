@@ -1,0 +1,6 @@
+**
+!Dockerfile
+!src/
+!src/**
+!lib/
+!lib/json-20240303.jar
