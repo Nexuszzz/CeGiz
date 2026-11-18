@@ -1,6 +1,18 @@
-# CeGiz — Backend Gemini untuk Railway
+# CeGiz — Backend Gemini Java
 
 Server Java ini menerima foto JPEG dari aplikasi CeGiz, meminta estimasi makanan dan gizi ke Gemini, memvalidasi hasil, lalu mengembalikannya ke HP. API Gemini hanya berada pada server.
+
+## Vercel Container Runtime
+
+Repository juga mendukung Vercel Container Runtime (Beta) dengan `Dockerfile.vercel` dan framework `container`. Runtime memakai JRE Alpine yang lebih ringan; kode server Java dan kontrak API tetap sama.
+
+- Buat project Vercel dengan framework Container dan root repository ini.
+- Pada environment Production, simpan `GEMINI_API_KEY` dan `CEGIZ_CLIENT_TOKEN` sebagai Secret. Atur `PORT=8080` sebagai Config.
+- Deploy production dan periksa `/health`. Endpoint analisis tetap `/v1/food:analyze` dengan header aplikasi yang sama.
+- Domain production harus dapat menerima request aplikasi HP; akses analisis tetap dilindungi kode aplikasi pada backend. Preview dapat tetap memakai proteksi Vercel.
+- APK dibangun dari project Android Java menggunakan URL HTTPS deployment yang telah diuji. Pengguna HP tidak mengisi API key.
+
+Dokumentasi: [Container Runtime Vercel](https://vercel.com/docs/functions/runtimes/container). Kode akses bersama bukan autentikasi per pengguna; keterbatasannya dijelaskan di bawah.
 
 ## Menyiapkan repository
 

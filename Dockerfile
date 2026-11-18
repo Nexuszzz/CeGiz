@@ -11,7 +11,7 @@ RUN find src/main/java -name '*.java' > main-sources.txt \
     && javac --release 17 -encoding UTF-8 -cp classes:lib/json-20240303.jar -d test-classes @test-sources.txt \
     && java -cp classes:test-classes:lib/json-20240303.jar com.cegiz.server.ServerTest
 
-FROM eclipse-temurin:21-jre-jammy
+FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 COPY --from=build /build/classes /app/classes
 COPY --from=build /build/lib/json-20240303.jar /app/lib/json-20240303.jar

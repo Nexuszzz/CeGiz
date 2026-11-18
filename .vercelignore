@@ -1,0 +1,11 @@
+.git/
+.vercel/
+.env*
+.private/
+**/.private/
+**/*.dpapi
+**/*.secret
+**/build/
+*.log
+Copy-Railway-Variable.ps1
+README.md
